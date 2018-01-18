@@ -253,7 +253,22 @@ def visualize(sess, dcgan, config, option):
 
       y = np.random.choice(40, config.batch_size)
       y_one_hot = np.zeros((config.batch_size, 40))
-      y_one_hot[np.arange(config.batch_size), y] = 1
+      #y_one_hot[np.arange(config.batch_size), y] = 1
+
+      #Use input vector from first image
+      y_one_hot[0][1] = 1;
+      y_one_hot[0][2] = 1;
+      y_one_hot[0][11] = 1;
+      y_one_hot[0][18] = 1;
+      y_one_hot[0][19] = 1;
+      y_one_hot[0][21] = 1;
+      y_one_hot[0][24] = 1;
+      y_one_hot[0][27] = 1;
+      y_one_hot[0][31] = 1;
+      y_one_hot[0][32] = 1;
+      y_one_hot[0][34] = 1;
+      y_one_hot[0][36] = 1;
+      y_one_hot[0][39] = 1;
 
       samples = sess.run(dcgan.sampler, feed_dict={dcgan.z: z_sample, dcgan.y: y_one_hot})
 

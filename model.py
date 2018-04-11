@@ -411,7 +411,7 @@ class DCGAN(object):
         h4, self.h4_w, self.h4_b = deconv2d(
             h3, [self.batch_size, s_h, s_w, self.c_dim], name='g_h4', with_w=True)
 
-        return tf.nn.sigmoid(h4)
+        return tf.nn.tanh(h4)
 
 
       else:
@@ -475,7 +475,7 @@ class DCGAN(object):
 
         h4 = deconv2d(h3, [self.batch_size, s_h, s_w, self.c_dim], name='g_h4')
 
-        return tf.nn.sigmoid(h4)
+        return tf.nn.tanh(h4)
       else:
         s_h, s_w = self.output_height, self.output_width
         s_h2, s_h4 = int(s_h/2), int(s_h/4)
